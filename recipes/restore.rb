@@ -9,8 +9,8 @@
 
 ruby_block "restore ghe" do
   block do
-    if ::GheUtil::Helper.has_ssh do
-      ::GheUtil::Helper.restore_ghe
+    if has_ssh?
+      restore_ghe
     end
   end
 end

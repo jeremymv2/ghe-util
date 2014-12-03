@@ -6,6 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+include_recipe "git"
 
 #copy down github files for GitHub Enterprise Util
 git node["ghe-util"]["root_dir"] do
@@ -30,7 +31,7 @@ template "#{node["ghe-util"]["root_dir"]}/backup.config" do
 end
 
 # Create SSH directory if it doesn't exist
-directory "~/.ssh" do
+directory "/root/.ssh" do
 	owner "root"
 	group "root"
 	mode "0700"
@@ -42,7 +43,7 @@ public_key = user_data_bag["public"]
 private_key = user_data_bag["private"]
 
 # Create private key file from template
-template "~/.ssh/github_admin_ssh" do
+template "/root/.ssh/github_admin_ssh" do
   source "github_admin_ssh.erb"
   mode '600'
   owner 'root'
@@ -53,7 +54,7 @@ template "~/.ssh/github_admin_ssh" do
 end
 
 # Create public key file from template
-template "~/.ssh/github_admin_ssh.pub" do
+template "/root/.ssh/github_admin_ssh.pub" do
   source "github_admin_ssh.pub.erb"
   mode '644'
   owner 'root'
