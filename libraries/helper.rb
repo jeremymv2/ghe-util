@@ -23,3 +23,7 @@ module GheUtil
     end
   end
 end
+
+Chef::Recipe.send(:include, ::GheUtil::Helper)
+Chef::Resource.send(:include, ::GheUtil::Helper)
+Chef::Provider.send(:include, ::GheUtil::Helper)

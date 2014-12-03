@@ -9,8 +9,8 @@
 
 ruby_block "backup ghe" do
   block do
-    if ::GheUtil::Helper.has_ssh do
-      ::GheUtil::Helper.backup_ghe
+    if has_ssh?
+      backup_ghe
     end
   end
 end

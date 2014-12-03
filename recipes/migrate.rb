@@ -9,12 +9,12 @@
 
 ruby_block "migrating ghe" do
   block do
-    if ::GheUtil::Helper.has_ssh do
-      ::GheUtil::Helper.maintence_mode(true)
+    if has_ssh? do
+      maintence_mode(true)
 
-      ::GheUtil::Helper.backup_ghe
+      backup_ghe
 
-      ::GheUtil::Helper.restore_ghe
+      restore_ghe
 
       #TODO: Change the DNS/Canabalize the IP of old GitHub Server...
     end
