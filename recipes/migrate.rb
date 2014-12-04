@@ -9,7 +9,7 @@
 
 ruby_block "migrating ghe" do
   block do
-    if has_ssh? do
+    if has_ssh?
       maintence_mode(true)
 
       backup_ghe
