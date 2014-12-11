@@ -8,12 +8,12 @@ module GheUtil
     end
 
     def backup_ghe
-      cmd = shell_out!('bin/ghe-host-check', :cwd => node["ghe-util"]["root_dir"])
+      cmd = shell_out!('bin/ghe-backup', :cwd => node["ghe-util"]["root_dir"])
       cmd.error!
     end
 
     def restore_ghe
-      cmd = shell_out!('bin/ghe-host-check', :cwd => node["ghe-util"]["root_dir"])
+      cmd = shell_out!('bin/ghe-restore', :cwd => node["ghe-util"]["root_dir"])
       cmd.error!
     end
 
