@@ -12,9 +12,23 @@ ruby_block "migrating ghe" do
     if has_ssh?
       maintence_mode(true)
 
-      backup_ghe
+      script "backup" do
+        interpreter "bash"
+        user "root"
+        cwd node["ghe-util"]["root_dir"]
+        code <<-EOH
+        bin/ghe-backup
+        EOH
+      end
 
-      restore_ghe
+      script "restore" do
+        interpreter "bash"
+        user "root"
+        cwd node["ghe-util"]["root_dir"]
+        code <<-EOH
+        bin/ghe-restore
+        EOH
+      end
 
       #TODO: Change the DNS/Canabalize the IP of old GitHub Server...
     end

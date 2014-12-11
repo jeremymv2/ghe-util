@@ -7,10 +7,12 @@
 # All rights reserved - Do Not Redistribute
 #
 
-ruby_block "restore ghe" do
-  block do
-    if has_ssh?
-      restore_ghe
-    end
-  end
+script "restore" do
+  interpreter "bash"
+  user "root"
+  cwd node["ghe-util"]["root_dir"]
+  code <<-EOH
+  bin/ghe-restore
+  EOH
+  only_if has_ssh?
 end

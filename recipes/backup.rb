@@ -7,10 +7,12 @@
 # All rights reserved - Do Not Redistribute
 #
 
-ruby_block "backup ghe" do
-  block do
-    if has_ssh?
-      backup_ghe
-    end
-  end
+script "backup" do
+  interpreter "bash"
+  user "root"
+  cwd node["ghe-util"]["root_dir"]
+  code <<-EOH
+  bin/ghe-backup
+  EOH
+  only_if has_ssh?
 end
