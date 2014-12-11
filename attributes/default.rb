@@ -1,4 +1,4 @@
-default["ghe-util"]["root_dir"] = '/etc/ghe-utl'
+default["ghe-util"]["root_dir"] = '/etc/ghe-util'
 default["ghe-util"]["hostname"] = ''
 default["ghe-util"]["data_directory"] = 'data'
 default["ghe-util"]["number_of_snapshots"] = '10'
