@@ -10,9 +10,9 @@ include_recipe "git"
 
 #copy down github files for GitHub Enterprise Util
 git node["ghe-util"]["root_dir"] do
-	checkout_branch 'stable'
-	repository 'https://github.com/github/backup-utils.git'
-	action :sync
+  checkout_branch 'master'
+  repository 'https://github.com/github/backup-utils.git'
+  action :sync
 end
 
 # Create backup.config file from template
@@ -23,19 +23,19 @@ template "#{node["ghe-util"]["root_dir"]}/backup.config" do
   group 'root'
   variables({
     :hostname => node["ghe-util"]["hostname"],
-  	:data_directory => node["ghe-util"]["data_directory"],
-  	:number_of_snapshots => node["ghe-util"]["number_of_snapshots"],
-  	:restore_hostname => node["ghe-util"]["restore_hostname"],
-  	:extra_ssh_options => node["ghe-util"]["extra_ssh_options"]
+    :data_directory => node["ghe-util"]["data_directory"],
+    :number_of_snapshots => node["ghe-util"]["number_of_snapshots"],
+    :restore_hostname => node["ghe-util"]["restore_hostname"],
+    :extra_ssh_options => node["ghe-util"]["extra_ssh_options"]
   })
 end
 
 # Create SSH directory if it doesn't exist
 directory "/root/.ssh" do
-	owner "root"
-	group "root"
-	mode "0700"
-	action :create
+  owner "root"
+  group "root"
+  mode "0700"
+  action :create
 end
 
 user_data_bag = chef_vault_item("ssh", "keys")
