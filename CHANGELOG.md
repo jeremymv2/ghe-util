@@ -3,9 +3,9 @@ ghe-util CHANGELOG
 
 This file is used to list changes made in each version of the ghe-util cookbook.
 
-0.1.0
+0.1.1
 -----
-- [your_name] - Initial release of ghe-util
+- [Jeremy J. Miller] - Changed to use crontab for backups and changed branch to master
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
