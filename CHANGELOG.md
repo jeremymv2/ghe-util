@@ -3,6 +3,10 @@ ghe-util CHANGELOG
 
 This file is used to list changes made in each version of the ghe-util cookbook.
 
+0.1.2
+-----
+- [Jeremy J. Miller] - crontab entry uses attributes now
+
 0.1.1
 -----
 - [Jeremy J. Miller] - Changed to use crontab for backups and changed branch to master

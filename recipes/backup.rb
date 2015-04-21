@@ -8,9 +8,13 @@
 #
 
 cron "ghe-backup" do
-  command "cd /etc/ghe-util/ && ./bin/ghe-backup >> /etc/ghe-util/backup.log 2>&1"
+  command "cd #{node["ghe-util"]["root_dir"]} && ./bin/ghe-backup >> #{node["ghe-util"]["root_dir"]}/backup.log"
   user "root"
-  hour '7'
-  minute '45'
+  hour node["ghe-util"]["cron"]["hour"]
+  minute node["ghe-util"]["cron"]["minute"]
+  day node["ghe-util"]["cron"]["day"]
+  month node["ghe-util"]["cron"]["month"]
+  weekday node["ghe-util"]["cron"]["weekday"]
+  mailto node["ghe-util"]["cron"]["mailto"]
   only_if has_ssh?
 end
